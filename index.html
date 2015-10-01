@@ -39,21 +39,21 @@
 
     <form name="myForm" class="form-horizontal" action="javascript:generate();" method="post">
       <div class="form-group">
-        <label for="input1" class="col-md-5 control-label text-success">1</label>
+        <label for="input1" class="col-md-5 control-label text-success">keyword1</label>
         <div class="col-md-2">
-          <input type="password" class="form-control" id="input1" placeholder="rick" autofocus>
+          <input type="password" class="form-control" id="input1" placeholder="my_ultimate" autofocus>
         </div>
       </div>
       <div class="form-group">
-        <label for="input2" class="col-md-5 control-label text-info">2</label>
+        <label for="input2" class="col-md-5 control-label text-info">keyword2</label>
         <div class="col-md-2">
-          <input type="password" class="form-control" id="input2" placeholder="and">
+          <input type="password" class="form-control" id="input2" placeholder="passw0rd">
         </div>
       </div>
       <div class="form-group">
-        <label for="input3" class="col-md-5 control-label text-warning">3</label>
+        <label for="input3" class="col-md-5 control-label text-warning">keyword3</label>
         <div class="col-md-2">
-          <input type="password" class="form-control" id="input3" placeholder="morty">
+          <input type="password" class="form-control" id="input3" placeholder="twitter">
         </div>
       </div>
       <div class="form-group">
@@ -81,10 +81,10 @@
       var hash = CryptoJS.HmacSHA256(message, "your password, your secret");
       var password = hash.toString(CryptoJS.enc.Hex);
       password = password.substring(0, 7).toLowerCase() +
-          password.substring(7, 17).toUpperCase();
+          password.substring(7, 14).toUpperCase();
 
       if (!copyTextToClipboard(password)) {
-        $("#generated").html(password);
+        $("#generated").html("only for 5 seconds: " + password);
       } else {
         $("#generated").html("Ring is in your hands.");
       }
