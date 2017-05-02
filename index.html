@@ -19,8 +19,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
     <!-- CryptoJS library: https://code.google.com/p/crypto-js/ -->
     <!-- <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha256.js"></script>-->
@@ -74,25 +74,27 @@
      * Generate a password upon form is submitted.
      */
     function generate() {
-      var input1 = $("#input1").val();
-      var input2 = $("#input2").val();
-      var input3 = $("#input3").val();
-      var message = (input1 + "_" + input2 + "_" + input3).toLowerCase();
-      var hash = CryptoJS.HmacSHA256(message, "your password, your secret");
-      var password = hash.toString(CryptoJS.enc.Hex);
-      password = password.substring(0, 7).toLowerCase() +
-          password.substring(7, 14).toUpperCase();
+      $(document).ready(function(){
+        var input1 = $("#input1").val();
+        var input2 = $("#input2").val();
+        var input3 = $("#input3").val();
+        var message = (input1 + "_" + input2 + "_" + input3).toLowerCase();
+        var hash = CryptoJS.HmacSHA256(message, "your password, your secret");
+        var password = hash.toString(CryptoJS.enc.Hex);
+        password = password.substring(0, 7).toLowerCase() +
+            password.substring(7, 14).toUpperCase();
 
-      if (!copyTextToClipboard(password)) {
-        $("#generated").html("only for 5 seconds: " + password);
-      } else {
-        $("#generated").html("Ring is in your hands.");
-      }
+        if (!copyTextToClipboard(password)) {
+          $("#generated").html("only for 5 seconds: " + password);
+        } else {
+          $("#generated").html("Ring is in your hands.");
+        }
 
-      // Remove the password after 5 seconds.
-      setTimeout(function(){
-        $("#generated").html('')
-      }, 5000);
+        // Remove the password after 5 seconds.
+        setTimeout(function(){
+          $("#generated").html('')
+        }, 5000);
+      });
     };
 
     /**
